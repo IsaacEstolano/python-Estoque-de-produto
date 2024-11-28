@@ -75,32 +75,12 @@ class SistemaCadastro:
     def deletarProduto(self):
         if not self.produtos:
             print("Produto nao cadastradado")
+            return
         codigo=int(input("Digite o codigo do produto a ser deletado:"))
         for produto in self.produtos:
             if produto.codigo_produto == codigo:
-                op=0
-                while op != 6:
-                    op=int(input("Digite 1 para deletar nome,2 para preço,3 para quantidade,4 para codigo,5 para categoria e 6 se desejar sair:"))
-                    if op==1:
-                        produto.nome=None
-                        print("Nome deletado!")
-                    elif op==2:
-                        produto.preco=None
-                        print("Preço deletado")
-                    elif op==3:
-                        produto.quantidade=None
-                        print("Quantidade do produto deletado")
-                    elif op==4:
-                        produto.codigo_produto=None
-                        print("Codigo do produto deletado")
-                    elif op==5:
-                        produto.categoria=None
-                        print("Categoria do produto deletado")
-                    elif op==6:
-                        print("Produto deletado")
-                        return
-                    else:
-                        print("Opçao invalida.tente novamente")
-                        
-                print("Produto nao encontrado.Verfique o codigo cadastrado")
+                self.produtos.remove(produto)
+                print("Produto deletado")
+                return
+        print("Produto nao encontrado.Verfique o codigo cadastrado")
             
